@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CheXanhFE</string>
+    <string name="skip">Skip</string>
+    <string name="continues">Continue</string>
+    <string name="greeting">Welcome to</string>
+    <string name="introduction">Chè Xanh Đất Đỏ application brings you a sophisticated and rich traditional flavor experience through the neatest and fastest form!</string>
+    <string name="button_experience">Application experience</string>
+    <string name="button_register">Register Account</string>
 </resources>

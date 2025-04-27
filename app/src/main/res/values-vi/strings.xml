@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CheXanhFE</string>
+    <string name="skip">Bỏ qua</string>
+    <string name="continues">Tiếp tục</string>
+    <string name="greeting">Chào Mừng bạn đến với</string>
+    <string name="introduction">Ứng dụng Chè Xanh Đất Đỏ mang đến cho quý khách một trải nghiệm tinh tế và đậm đà hương vị truyền thống thông qua hình thức gọn gàng và nhanh nhất!</string>
+    <string name="button_experience">Trải nghiệm ứng dụng</string>
+    <string name="button_register">Đăng kí tài khoản</string>
+</resources>
