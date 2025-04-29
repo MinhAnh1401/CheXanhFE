@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Trạng thái khi nhấn -->
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="#E0E0E0" /> <!-- Màu nền khi nhấn -->
+            <corners android:radius="4dp" /> <!-- Bo góc -->
+        </shape>
+    </item>
+<!--    &lt;!&ndash; Trạng thái mặc định &ndash;&gt;-->
+<!--    <item>-->
+<!--        <shape>-->
+<!--            <solid android:color="#FFFFFF" /> &lt;!&ndash; Màu nền mặc định &ndash;&gt;-->
+<!--            <corners android:radius="4dp" /> &lt;!&ndash; Bo góc &ndash;&gt;-->
+<!--        </shape>-->
+<!--    </item>-->
+</selector>

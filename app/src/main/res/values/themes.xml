@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.CheXanhFE" parent="Theme.Material3.DayNight.NoActionBar">
-
+        <item name="colorPrimary">@color/green_primary</item>
     </style>
 
     <style name="Theme.CheXanhFE" parent="Base.Theme.CheXanhFE" />

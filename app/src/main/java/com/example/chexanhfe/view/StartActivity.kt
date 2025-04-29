@@ -1,9 +1,12 @@
-package com.example.chexanhfe
+package com.example.chexanhfe.view
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.graphics.Rect
 import android.net.Uri
 import android.os.Bundle
 import android.view.MotionEvent
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -14,6 +17,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.chexanhfe.R
 import com.example.chexanhfe.utils.AnimationUtils
 
 class StartActivity : AppCompatActivity() {
@@ -24,10 +28,12 @@ class StartActivity : AppCompatActivity() {
     private lateinit var arrowBottom: ImageView // arrow trong bottom_bar
     private lateinit var slidingPanel: ConstraintLayout
     private lateinit var bottomBar: LinearLayout
+    private lateinit var btnExperience: Button
+    private lateinit var btnRegister: Button
     private var isPanelVisible = false
     private var initialTranslation = 0f
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId", "ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -47,6 +53,8 @@ class StartActivity : AppCompatActivity() {
         arrowBottom = findViewById(R.id.arrow)
         slidingPanel = findViewById(R.id.sliding_panel)
         bottomBar = findViewById(R.id.bottom_bar)
+        btnExperience = findViewById(R.id.experience_button)
+        btnRegister = findViewById(R.id.register_button)
 
         // Cài đặt VideoView để phát video
         val videoUri = Uri.parse("android.resource://${packageName}/${R.raw.video_start}")
@@ -80,11 +88,22 @@ class StartActivity : AppCompatActivity() {
             togglePanel(initialTranslation)
         }
 
+
+        btnExperience.setOnClickListener {
+            // { TODO }
+        }
+
+        // chuyển sang activity đăng ký
+        btnRegister.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
         // Touch listener cho root layout để đóng bảng khi chạm bên ngoài
         val rootLayout = findViewById<ConstraintLayout>(R.id.started)
         rootLayout.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN && isPanelVisible) {
-                val panelRect = android.graphics.Rect()
+                val panelRect = Rect()
                 slidingPanel.getHitRect(panelRect)
                 if (!panelRect.contains(event.rawX.toInt(), event.rawY.toInt())) {
                     togglePanel(initialTranslation)

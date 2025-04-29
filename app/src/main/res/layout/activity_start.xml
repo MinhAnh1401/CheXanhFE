@@ -6,9 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".StartActivity">
-
-    <!--Button skip (bỏ qua)-->
+    tools:context="view.StartActivity">
 
     <VideoView
         android:id="@+id/layoutVideo"
@@ -22,17 +20,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <!-- LinearLayout for the bottom row (Skip, Arrow, Continue) -->
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imageView"-->
+    <!--        android:layout_width="150dp"-->
+    <!--        android:layout_height="150dp"-->
+    <!--        android:layout_marginTop="92dp"-->
+    <!--        android:background="@drawable/logo_tea"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.497"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
     <LinearLayout
         android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center"
+        android:orientation="horizontal"
         android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <!-- Button Skip (Bỏ qua) -->
         <TextView
@@ -41,37 +49,36 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/roboto_semi_condensed"
-            android:background="?attr/selectableItemBackground"
+            android:gravity="start"
             android:padding="10dp"
             android:text="@string/skip"
             android:textColor="@color/green"
-            android:textSize="18sp"
-            android:gravity="start" />
+            android:textSize="18sp" />
 
         <!-- Arrow Icon -->
         <ImageView
             android:id="@+id/arrow"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/arrow"
-            android:layout_marginHorizontal="20dp" />
+            android:layout_marginHorizontal="20dp"
+            android:src="@drawable/arrow" />
 
         <!-- Button Continue (Tiếp tục) -->
         <TextView
+
             android:id="@+id/txtContinue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/roboto_semi_condensed"
-            android:background="?attr/selectableItemBackground"
+            android:gravity="end"
             android:padding="10dp"
             android:text="@string/continues"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:gravity="end" />
-    </LinearLayout>
+            android:textSize="18sp" />
 
-    <!-- Arrow Icon (at the top center of the panel) -->
+        <!--        android:background="?attr/selectableItemBackground"-->
+    </LinearLayout>
 
     <!-- Sliding Panel (initially positioned so the arrow is visible) -->
 
@@ -92,49 +99,49 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
 
         <!-- Background for the panel (curved top) -->
 
         <!-- Welcome Text -->
+
         <View
             android:id="@+id/panel_background"
             android:layout_width="match_parent"
-            android:layout_height="380dp"
-            android:background="@drawable/panel_background"
+            android:layout_height="400dp"
+            android:background="@drawable/panel"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="0dp"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/welcome_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/roboto_semi_condensed"
+            android:gravity="center"
             android:text="@string/greeting"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            android:fontFamily="@font/roboto_semi_condensed"
-            android:gravity="center"
-            android:layout_marginTop="32dp"
-            app:layout_constraintTop_toTopOf="@id/panel_background"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/panel_background" />
 
         <!-- Description Text -->
         <TextView
             android:id="@+id/welcome_text_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_bold"
             android:gravity="center"
             android:text="Chè Xanh Đất Đỏ"
             android:textColor="#19D866"
             android:textSize="30sp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/roboto_bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
@@ -145,12 +152,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/calibri"
             android:gravity="center"
             android:text="@string/introduction"
             android:textColor="#FFFFFF"
             android:textSize="17sp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/roboto_light_italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/welcome_text_2" />
@@ -159,9 +166,9 @@
         <Button
             android:id="@+id/experience_button"
             android:layout_width="363dp"
-            android:layout_height="50dp"
+            android:layout_height="57dp"
             android:layout_marginTop="20dp"
-            android:backgroundTint="@color/green"
+            android:background="@drawable/round_background"
             android:paddingHorizontal="32dp"
             android:text="@string/button_experience"
             android:textColor="#FFFFFF"
@@ -173,7 +180,7 @@
         <Button
             android:id="@+id/register_button"
             android:layout_width="363dp"
-            android:layout_height="50dp"
+            android:layout_height="57dp"
             android:layout_marginTop="15dp"
             android:backgroundTint="#FFFFFF"
             android:paddingHorizontal="32dp"
@@ -188,15 +195,15 @@
             android:id="@+id/contact_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:text="Hotline: 0979367847 - Email: chexanhdatdo@gmail.com"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintTop_toBottomOf="@id/register_button"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/register_button" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
