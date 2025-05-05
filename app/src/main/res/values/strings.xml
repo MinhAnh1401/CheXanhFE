@@ -6,4 +6,18 @@
     <string name="introduction">Chè Xanh Đất Đỏ application brings you a sophisticated and rich traditional flavor experience through the neatest and fastest form!</string>
     <string name="button_experience">Application experience</string>
     <string name="button_register">Register Account</string>
+    <string name="register_title">Register your account</string>
+    <string name="register_desc">Enter your email and password to register</string>
+    <string name="login_title">Login your account</string>
+    <string name="login_desc">Enter your email and password to login</string>
+    <string name="passwordInput">Password</string>
+    <string name="passwordConfirmInput">Confirm Password</string>
+    <string name="showPass">Show Password</string>
+    <string name="foggotPass">Foggot Password?</string>
+    <string name="login">Login Account</string>
+    <string name="googleSocials">Or the way to sign in</string>
+    <string name="tvCreateAccount">Don\'t have an account?</string>
+    <string name="createAccount">Create Account</string>
+    <string name="loginAccount">Already have an account?</string>
+    <string name="tvLoginAccount">Login Account</string>
 </resources>

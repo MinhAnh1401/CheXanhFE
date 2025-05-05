@@ -26,7 +26,7 @@ class RegisterActivity : AppCompatActivity() {
             insets
         }
 
-        txtLogin = findViewById(R.id.txtLogin)
+        txtLogin = findViewById(R.id.tvLoginAccount)
         txtLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)

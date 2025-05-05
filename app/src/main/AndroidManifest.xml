@@ -12,20 +12,23 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/logo_tea"
         android:localeConfig="@xml/locale_config"
+        android:roundIcon="@drawable/logo_tea"
         android:supportsRtl="true"
         android:theme="@style/Theme.CheXanhFE"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".view.ChatbotActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.RegisterActivity"
             android:exported="false"
-            android:theme="@style/Theme.CheXanhFE"/>
+            android:theme="@style/Theme.CheXanhFE" />
         <activity
             android:name=".view.LoginActivity"
             android:exported="false"
-            android:theme="@style/Theme.CheXanhFE"/>
+            android:theme="@style/Theme.CheXanhFE" />
         <activity
             android:name=".view.MainActivity"
             android:exported="false" />

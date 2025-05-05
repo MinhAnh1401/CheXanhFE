@@ -95,7 +95,7 @@ class StartActivity : AppCompatActivity() {
 
         // chuyển sang activity đăng ký
         btnRegister.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 

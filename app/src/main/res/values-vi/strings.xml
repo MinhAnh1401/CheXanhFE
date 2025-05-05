@@ -7,4 +7,18 @@
     <string name="introduction">Ứng dụng Chè Xanh Đất Đỏ mang đến cho quý khách một trải nghiệm tinh tế và đậm đà hương vị truyền thống thông qua hình thức gọn gàng và nhanh nhất!</string>
     <string name="button_experience">Trải nghiệm ứng dụng</string>
     <string name="button_register">Đăng kí tài khoản</string>
+    <string name="register_title">Đăng ký tài khoản\ncủa bạn</string>
+    <string name="register_desc">Nhập email và mật khẩu của bạn để đăng ký</string>
+    <string name="login_title">Đăng nhập tài khoản\ncủa bạn</string>
+    <string name="login_desc">Nhập email và mật khẩu của bạn để đăng nhập</string>
+    <string name="passwordInput">Mật khẩu</string>
+    <string name="passwordConfirmInput">Nhập lại mật khẩu</string>
+    <string name="showPass">Hiển thị mật khẩu</string>
+    <string name="foggotPass">Quên mật khẩu?</string>
+    <string name="login">Đăng nhập tài khoản</string>
+    <string name="googleSocials">Hoặc cách đăng nhập</string>
+    <string name="tvCreateAccount">Bạn chưa có tài khoản?</string>
+    <string name="createAccount">Tạo tài khoản</string>
+    <string name="loginAccount">Bạn đã có tài khoản?</string>
+    <string name="tvLoginAccount">Đăng nhập tài khoản</string>
 </resources>
