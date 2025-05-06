@@ -20,4 +20,12 @@
     <string name="createAccount">Create Account</string>
     <string name="loginAccount">Already have an account?</string>
     <string name="tvLoginAccount">Login Account</string>
+    <string name="security">I\'ve read and agreed to User Agreement and Privacy \nPolicy</string>
+    <string name="fab_description">Opening Cart</string>
+    <string name="home">Home</string>
+    <string name="oder">Order</string>
+    <string name="discount">Discount</string>
+    <string name="profile">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

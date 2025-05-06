@@ -3,6 +3,7 @@ package com.example.chexanhfe.view
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,7 @@ import com.example.chexanhfe.R
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var txtRegister: TextView
+    private lateinit var btnLoginAccount: Button
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,9 +29,16 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+
         txtRegister = findViewById(R.id.tvCreateAccount)
         txtRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnLoginAccount = findViewById(R.id.login_button)
+        btnLoginAccount.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }

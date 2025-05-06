@@ -21,4 +21,11 @@
     <string name="createAccount">Tạo tài khoản</string>
     <string name="loginAccount">Bạn đã có tài khoản?</string>
     <string name="tvLoginAccount">Đăng nhập tài khoản</string>
+    <string name="security">Tôi đã đọc và đồng ý với Thỏa thuận người dùng và \nChính sách bảo mật</string>
+    <string name="fab_description">Mở trang giỏ hàng</string>
+    <string name="home">Trang chủ</string>
+    <string name="oder">Đặt hàng</string>
+    <string name="discount">Ưu đãi</string>
+    <string name="profile">Hồ sơ</string>
+
 </resources>
