@@ -3,44 +3,58 @@ package com.example.chexanhfe.utils
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.TranslateAnimation
+import android.animation.ObjectAnimator
+import android.animation.AnimatorListenerAdapter
+import android.os.Handler
+import android.os.Looper
 
 object AnimationUtils {
     fun slideUpPanel(view: View, distance: Float, bottomBar: View, duration: Long = 500) {
         // Hiển thị view (panel) khi thực hiện thao tác trượt lên
         view.visibility = View.VISIBLE
 
-        // Tạo một animation để trượt view từ vị trí ban đầu tới vị trí 0 (trượt lên)
-        val slideUp = TranslateAnimation(0f, 0f, distance, 0f)
-        slideUp.duration = duration // Thời gian thực hiện animation, mặc định là 500ms
-        view.startAnimation(slideUp) // Bắt đầu animation trượt lên
+        // Sử dụng ObjectAnimator để đảm bảo vị trí của view được cập nhật trong quá trình animation
+        val slideUpAnimator = ObjectAnimator.ofFloat(view, "translationY", distance, 0f)
+        slideUpAnimator.duration = duration
+        slideUpAnimator.interpolator = AccelerateDecelerateInterpolator()
 
-        // Cập nhật vị trí cuối cùng của view để đảm bảo nó ở đúng vị trí
-        view.translationY = 0f
+        slideUpAnimator.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationStart(animation: android.animation.Animator) {
+                // Ẩn thanh bottom ngay khi bắt đầu animation
+                bottomBar.visibility = View.GONE
+            }
 
-        // Ẩn thanh "bottomBar" khi panel trượt lên
-        bottomBar.visibility = View.GONE
+            override fun onAnimationEnd(animation: android.animation.Animator) {
+                // Đảm bảo view đã được đặt ở vị trí cuối cùng
+                view.translationY = 0f
+            }
+        })
+
+        slideUpAnimator.start()
     }
 
     fun slideDownPanel(view: View, distance: Float, bottomBar: View, duration: Long = 500) {
-        // Xóa bất kỳ animation hiện tại nào đang áp dụng trên view (nếu có)
+        // Xóa bất kỳ animation hiện tại nào đang áp dụng trên view
         view.clearAnimation()
 
-        // Bắt đầu animation trượt xuống thông qua phương thức animate()
-        view.animate()
-            .translationY(distance) // Di chuyển panel xuống vị trí cách điểm gốc một khoảng bằng distance
-            .setDuration(duration) // Thời gian thực hiện animation, mặc định là 500ms
-            .setInterpolator(AccelerateDecelerateInterpolator()) // Đặt bộ nội suy để tạo hiệu ứng chuyển động mượt mà
+        // Sử dụng ObjectAnimator để đảm bảo vị trí của view được cập nhật đúng
+        val slideDownAnimator = ObjectAnimator.ofFloat(view, "translationY", view.translationY, distance)
+        slideDownAnimator.duration = duration
+        slideDownAnimator.interpolator = AccelerateDecelerateInterpolator()
 
-            // Tùy chọn: Thực hiện hành động khi bắt đầu animation
-            .withStartAction {
-                /* Tùy chọn: Hành động khi bắt đầu */ // Thêm các tác vụ nếu cần khi animation bắt đầu
-            }
-
-            // Thực hiện hành động sau khi animation kết thúc
-            .withEndAction {
-                // Hiển thị thanh "bottomBar" sau khi panel đã trượt xuống
+        slideDownAnimator.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: android.animation.Animator) {
+                // Hiển thị thanh bottom sau khi animation hoàn tất
                 bottomBar.visibility = View.VISIBLE
+
+                // Thêm một chút delay để đảm bảo hiệu ứng mượt mà
+                Handler(Looper.getMainLooper()).postDelayed({
+                    // Đảm bảo panel ở đúng vị trí sau khi animation kết thúc
+                    view.translationY = distance
+                }, 50)
             }
-            .start() // Bắt đầu animation
+        })
+
+        slideDownAnimator.start()
     }
 }

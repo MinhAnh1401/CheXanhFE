@@ -18,6 +18,7 @@
         android:theme="@style/Theme.CheXanhFE"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
             android:name=".view.ChatbotActivity"
             android:exported="false" />

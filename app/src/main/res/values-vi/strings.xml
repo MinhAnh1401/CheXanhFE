@@ -27,5 +27,6 @@
     <string name="oder">Đặt hàng</string>
     <string name="discount">Ưu đãi</string>
     <string name="profile">Hồ sơ</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
