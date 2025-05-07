@@ -1,6 +1,5 @@
 package com.example.chexanhfe.view
 
-import android.icu.text.CaseMap.Title
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
