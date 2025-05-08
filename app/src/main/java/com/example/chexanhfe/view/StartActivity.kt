@@ -42,7 +42,7 @@ class StartActivity : AppCompatActivity() {
     )
 
     private val handler = Handler(Looper.getMainLooper())
-    private val scrollPoster = 4000L // cuộn 3s
+    private val scrollPoster = 4000L // cuộn 4s
     private var currentPage = 0
 
     private val autoScrollRunnable = object : Runnable {
