@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="4dp"
+        android:backgroundTint="@color/white"
         app:cardCornerRadius="20dp">
 
         <LinearLayout
@@ -24,12 +25,11 @@
 
             <!-- Avatar -->
             <ImageView
-                android:layout_width="47dp"
-                android:layout_height="47dp"
-                android:src="@drawable/avatar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logo_tea"
                 android:layout_marginEnd="12dp"
                 android:scaleType="centerCrop"
-                android:background="@drawable/circle_background"
                 android:contentDescription="Avatar" />
 
             <!-- Text Info -->

@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.chexanhfe.R
 import com.example.chexanhfe.utils.AnimationUtils
@@ -44,38 +45,31 @@ class HomeFragment : Fragment() {
             if (itemCount == 0) return
 
             val nextPage = (bannerViewPager.currentItem + 1) % itemCount
-            val pageWidth = bannerViewPager.width
 
-            if (nextPage != 0) {
-                smoothScrollByFakeDrag(pageWidth, 400L) // 500ms trượt nhẹ
-            } else {
-                bannerViewPager.setCurrentItem(0, true) // reset về đầu không animation
-            }
+            // Cuộn mượt mà sang trang tiếp theo (bao gồm cả khi nextPage == 0)
+            smoothScrollToNextPage(nextPage)
 
             currentPage = nextPage
             handler.postDelayed(this, scrollInterval)
         }
 
-        fun smoothScrollByFakeDrag(distance: Int, duration: Long) {
-            if (bannerViewPager.beginFakeDrag()) {
-                val interval = 10L
-                val steps = (duration / interval).toInt()
-                val delta = distance / steps
-
-                var step = 0
-                handler.post(object : Runnable {
-                    override fun run() {
-                        if (bannerViewPager.isFakeDragging && step < steps) {
-                            bannerViewPager.fakeDragBy(-delta.toFloat()) // -delta = cuộn sang phải
-                            step++
-                            handler.postDelayed(this, interval)
-                        } else {
-                            if (bannerViewPager.isFakeDragging) {
-                                bannerViewPager.endFakeDrag()
-                            }
-                        }
+        private fun smoothScrollToNextPage(targetPage: Int) {
+            // Truy cập RecyclerView bên trong ViewPager2
+            val recyclerView = bannerViewPager.getChildAt(0) as? RecyclerView
+            recyclerView?.let {
+                // Sử dụng smoothScrollToPosition với LinearSmoothScroller tùy chỉnh
+                val smoothScroller = object : androidx.recyclerview.widget.LinearSmoothScroller(recyclerView.context) {
+                    override fun getHorizontalSnapPreference(): Int {
+                        return SNAP_TO_START
                     }
-                })
+
+                    override fun calculateTimeForScrolling(dx: Int): Int {
+                        // Đặt thời gian cuộn khoảng 400ms
+                        return 400
+                    }
+                }
+                smoothScroller.targetPosition = targetPage
+                recyclerView.layoutManager?.startSmoothScroll(smoothScroller)
             }
         }
     }

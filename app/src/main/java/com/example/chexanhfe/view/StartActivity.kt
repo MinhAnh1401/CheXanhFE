@@ -17,12 +17,13 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.chexanhfe.R
 import com.example.chexanhfe.utils.AnimationUtils
 import com.example.chexanhfe.utils.PosterPagerAdapter
 
-class StartActivity : AppCompatActivity() {
+class   StartActivity : AppCompatActivity() {
     private lateinit var txtSkip: TextView
     private lateinit var txtContinue: TextView
     private lateinit var arrowIcon: ImageView // arrow_down (di chuyển cùng bảng)
@@ -51,41 +52,57 @@ class StartActivity : AppCompatActivity() {
             if (itemCount == 0) return
 
             val nextPage = (posterPager.currentItem + 1) % itemCount
-
-            val pageWidth = posterPager.width
-            if (nextPage != 0) {
-                smoothScrollByFakeDrag(pageWidth, 400L) // 500ms trượt nhẹ
-            } else {
-                posterPager.setCurrentItem(0, true) // reset về đầu không animation
-            }
+            // Cuộn mượt mà sang trang tiếp theo (bao gồm cả khi nextPage == 0)
+            smoothScrollToNextPage(nextPage)
 
             currentPage = nextPage
             handler.postDelayed(this, scrollPoster)
         }
-    }
 
-    fun smoothScrollByFakeDrag(distance: Int, duration: Long) {
-        if (posterPager.beginFakeDrag()) {
-            val interval = 10L
-            val steps = (duration / interval).toInt()
-            val delta = distance / steps
+        private fun smoothScrollToNextPage(targetPage: Int) {
+            // Truy cập RecyclerView bên trong ViewPager2
+            val recyclerView = posterPager.getChildAt(0) as? RecyclerView
+            recyclerView?.let {
+                // Sử dụng smoothScrollToPosition với LinearSmoothScroller tùy chỉnh
+                val smoothScroller = object : androidx.recyclerview.widget.LinearSmoothScroller(recyclerView.context) {
+                    override fun getHorizontalSnapPreference(): Int {
+                        return SNAP_TO_START
+                    }
 
-            var step = 0
-            handler.post(object : Runnable {
-                override fun run() {
-                    if (posterPager.isFakeDragging && step < steps) {
-                        posterPager.fakeDragBy(-delta.toFloat()) // -delta = cuộn sang phải
-                        step++
-                        handler.postDelayed(this, interval)
-                    } else {
-                        if (posterPager.isFakeDragging) {
-                            posterPager.endFakeDrag()
-                        }
+                    override fun calculateTimeForScrolling(dx: Int): Int {
+                        // Đặt thời gian cuộn khoảng 400ms
+                        return 400
                     }
                 }
-            })
+                smoothScroller.targetPosition = targetPage
+                recyclerView.layoutManager?.startSmoothScroll(smoothScroller)
+            }
         }
     }
+
+
+//    fun smoothScrollByFakeDrag(distance: Int, duration: Long) {
+//        if (posterPager.beginFakeDrag()) {
+//            val interval = 10L
+//            val steps = (duration / interval).toInt()
+//            val delta = distance / steps
+//
+//            var step = 0
+//            handler.post(object : Runnable {
+//                override fun run() {
+//                    if (posterPager.isFakeDragging && step < steps) {
+//                        posterPager.fakeDragBy(-delta.toFloat()) // -delta = cuộn sang phải
+//                        step++
+//                        handler.postDelayed(this, interval)
+//                    } else {
+//                        if (posterPager.isFakeDragging) {
+//                            posterPager.endFakeDrag()
+//                        }
+//                    }
+//                }
+//            })
+//        }
+//    }
 
 
     @SuppressLint("MissingInflatedId", "ClickableViewAccessibility")
@@ -121,9 +138,13 @@ class StartActivity : AppCompatActivity() {
                     ViewPager2.SCROLL_STATE_DRAGGING -> {
                         handler.removeCallbacks(autoScrollRunnable)
                     }
-
                     ViewPager2.SCROLL_STATE_IDLE -> {
+                        // Đảm bảo autoScrollRunnable được lên lịch lại
+                        handler.removeCallbacks(autoScrollRunnable) // Xóa bất kỳ runnable cũ nào
                         handler.postDelayed(autoScrollRunnable, scrollPoster)
+                    }
+                    ViewPager2.SCROLL_STATE_SETTLING -> {
+                        // Có thể thêm xử lý nếu cần khi đang settling
                     }
                 }
             }
