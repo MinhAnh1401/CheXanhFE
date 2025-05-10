@@ -10,9 +10,8 @@ import android.os.Looper
 
 object AnimationUtils {
     fun slideUpPanel(view: View, distance: Float, bottomBar: View, duration: Long = 500) {
-        // Hiển thị view (panel) khi thực hiện thao tác trượt lên
-        view.visibility = View.VISIBLE
 
+        view.visibility = View.VISIBLE // Hiển thị view (panel) khi thực hiện thao tác trượt lên
         // Sử dụng ObjectAnimator để đảm bảo vị trí của view được cập nhật trong quá trình animation
         val slideUpAnimator = ObjectAnimator.ofFloat(view, "translationY", distance, 0f)
         slideUpAnimator.duration = duration
@@ -29,14 +28,12 @@ object AnimationUtils {
                 view.translationY = 0f
             }
         })
-
         slideUpAnimator.start()
     }
 
     fun slideDownPanel(view: View, distance: Float, bottomBar: View, duration: Long = 500) {
-        // Xóa bất kỳ animation hiện tại nào đang áp dụng trên view
-        view.clearAnimation()
 
+        view.clearAnimation()  // Xóa bất kỳ animation hiện tại nào đang áp dụng trên view
         // Sử dụng ObjectAnimator để đảm bảo vị trí của view được cập nhật đúng
         val slideDownAnimator = ObjectAnimator.ofFloat(view, "translationY", view.translationY, distance)
         slideDownAnimator.duration = duration
@@ -54,7 +51,6 @@ object AnimationUtils {
                 }, 50)
             }
         })
-
         slideDownAnimator.start()
     }
 }

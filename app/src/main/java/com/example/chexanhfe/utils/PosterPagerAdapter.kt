@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.chexanhfe.R
 
 class PosterPagerAdapter(private val posters: List<Int>) :
-    RecyclerView.Adapter<PosterPagerAdapter.PosterViewHolder>() {
+RecyclerView.Adapter<PosterPagerAdapter.PosterViewHolder>() {
 
     inner class PosterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val posterImage: ImageView = view.findViewById(R.id.posterImage)
