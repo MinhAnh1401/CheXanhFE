@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
+    android:background="@color/white_dark"
     tools:context=".screen.HomeFragment">
 
     <androidx.cardview.widget.CardView
@@ -39,15 +39,30 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvGreeting"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chào buổi sáng, Chè Xanh ..."
-                    android:textColor="@color/green"
-                    android:textSize="14sp"
-                    android:maxLines="1"
-                    android:ellipsize="end" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvGreeting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chào"
+                        android:textColor="@color/green"
+                        android:textSize="14sp"
+                        android:maxLines="1"
+                        android:ellipsize="end" />
+
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=", Chè Xanh ..."
+                        android:textColor="@color/green"
+                        android:textSize="14sp"
+                        android:ellipsize="end" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -58,7 +73,7 @@
                         android:id="@+id/tvCustomerInfo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Khách hàng"
+                        android:text="@string/customer"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
 
@@ -71,7 +86,15 @@
                         android:id="@+id/tvCustomerScore"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Điểm: 0000"
+                        android:text="@string/point"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvScore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 0000"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
 
@@ -135,8 +158,44 @@
 
             </FrameLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Explore vouchers"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="1dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/seeMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="See more"
+                    android:layout_marginBottom="1dp"
+                    android:textColor="@color/green"/>
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:src="@drawable/arrow_right" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+
         </LinearLayout>
-
     </ScrollView>
-
 </FrameLayout>

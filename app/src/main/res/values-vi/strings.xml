@@ -28,5 +28,13 @@
     <string name="discount">Ưu đãi</string>
     <string name="profile">Hồ sơ</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_chexanh">, Chè Xanh...</string>
+    <string name="customer">Khách hàng</string>
+    <string name="point">Điểm:</string>
+    <string name="greeting_morning">Chào buổi sáng!</string>
+    <string name="greeting_afternoon">Chào buổi chiều!</string>
+    <string name="greeting_evening">Chào buổi tối!</string>
+    <string name="greeting_night">Chúc ngủ ngon!</string>
+
 
 </resources>

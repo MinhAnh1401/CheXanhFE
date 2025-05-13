@@ -1,5 +1,6 @@
 package com.example.chexanhfe.screen
 
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -22,12 +24,12 @@ class HomeFragment : Fragment() {
     private lateinit var arrowIcon: ImageView
     private lateinit var bottomBar: LinearLayout
     private lateinit var indicatorContainer: LinearLayout
+    private lateinit var tv_Hello:TextView
 
     private val poster = listOf(
         R.drawable.banner1,
         R.drawable.banner2,
-        R.drawable.banner1,
-        R.drawable.banner2)
+        R.drawable.banner3)
 
     private var adapter: PosterPagerAdapter? = null
     private val handler = Handler(Looper.getMainLooper())
@@ -80,6 +82,7 @@ class HomeFragment : Fragment() {
         bottomBar = view.findViewById(R.id.bottom_bar)
         indicatorContainer = view.findViewById(R.id.indicatorContainer)
         adapter = PosterPagerAdapter(poster)
+        tv_Hello = view.findViewById(R.id.tvGreeting)
         bannerViewPager.adapter = adapter
 
         // Thiết lập indicators
@@ -104,6 +107,19 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+
+        tv_Hello.text = getGreetingMessage()
+    }
+
+    // Chào khách hàng theo khung giờ
+    private fun getGreetingMessage(): String {
+        val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+        return when(hour) {
+            in 5..11 -> getString(R.string.greeting_morning)
+            in 12..16 -> getString(R.string.greeting_afternoon)
+            in 17..20 -> getString(R.string.greeting_evening)
+            else -> getString(R.string.greeting_night)
+        }
     }
 
     // Hàm thiết lập các indicator dots
