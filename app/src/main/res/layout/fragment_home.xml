@@ -192,7 +192,43 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <!-- Nút mũi tên trái -->
+                <ImageView
+                    android:id="@+id/btnLeft"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_arrow_left"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <!-- Layout chứa danh sách -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+
+                <!-- Nút mũi tên phải -->
+                <ImageView
+                    android:id="@+id/btnRight"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_arrow_right"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+
+
 
             </LinearLayout>
 
